@@ -31,6 +31,9 @@ class SettingViewController: UIViewController {
         setColor()
         setValue(for: redLabel, greenLabel, blueLabel)
     }
+    @IBAction func doneButtonPressed() {
+        dismiss(animated: true)
+    }
     
     // Изменение цветов слайдерами
     @IBAction func rgbSlider(_ sender: UISlider) {
