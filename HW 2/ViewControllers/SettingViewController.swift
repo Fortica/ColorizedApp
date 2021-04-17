@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  HW 2
 //
-//  Created by Alexey Efimov on 12.06.2018.
+//  Created by Larisa Marcinevskaya on 12.06.2018.
 //  Copyright © 2018 Alexey Efimov. All rights reserved.
 //
 
@@ -16,22 +16,30 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var greenLabel: UILabel!
     @IBOutlet weak var blueLabel: UILabel!
     
+    @IBOutlet var rgbSliderStack: [UIStackView]!
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
+    
+    var colorViewMediator: UIColor!
+    
+
+    var delegate: SettingViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         colorView.layer.cornerRadius = 15
+        colorView.backgroundColor = colorViewMediator
         
         redSlider.minimumTrackTintColor = .red
         greenSlider.minimumTrackTintColor = .green
         
-        setColor()
+//        setColor()
         setValue(for: redLabel, greenLabel, blueLabel)
     }
     @IBAction func doneButtonPressed() {
+        delegate.setColorView(colorValue: colorView.backgroundColor ?? .clear)
         dismiss(animated: true)
     }
     
